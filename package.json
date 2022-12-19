@@ -4,7 +4,7 @@
   "description": "interview test",
   "main": "index.js",
   "scripts": {
-    "test": "mocha index.test.js"
+    "test": "mocha main.test.js"
   },
   "author": "sulthan ahmed",
   "license": "MIT",
