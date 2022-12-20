@@ -2,7 +2,7 @@
 
 const axios = require('axios');
 
-const recursion = (evolvesToJson) => {
+const transform = (evolvesToJson) => {
   if (evolvesToJson.evolves_to.length < 1) {
     return {
       name: evolvesToJson.species.name,
@@ -14,7 +14,7 @@ const recursion = (evolvesToJson) => {
   // This is also covers a potential situation where there are
   // multiple evolution chains
   for(let i=0; i < evolvesToJson.evolves_to.length; i++) {
-    evolutions.push(recursion(evolvesToJson.evolves_to[i]));
+    evolutions.push(transform(evolvesToJson.evolves_to[i]));
   }
 
   return {
@@ -39,7 +39,7 @@ const run = async (pokemonName) => {
       throw new Error(`Unable to find evolution chain for pokemon, '${pokemonName}'`);
     }
 
-    const map = recursion(evolutionChain);
+    const map = transform(evolutionChain);
 
     return JSON.stringify(map, undefined, 2);
   } catch (err) {
