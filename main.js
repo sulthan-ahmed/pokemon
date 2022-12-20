@@ -28,9 +28,9 @@ const run = async (pokemonName) => {
     const pokemonSpecies = await axios.get(`https://challenges.hackajob.co/pokeapi/api/v2/pokemon-species/${pokemonName}/`);
     const evolutionChainUrl = pokemonSpecies.data.evolution_chain.url;
     const evolutionDetail = await axios.get(evolutionChainUrl);
-    const EvolutionDetailJson = evolutionDetail.data.chain;
+    const evolutionDetailJson = evolutionDetail.data.chain;
 
-    const map = recursion(EvolutionDetailJson);
+    const map = recursion(evolutionDetailJson);
 
     return JSON.stringify(map, undefined, 2);
   } catch (err) {
