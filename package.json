@@ -9,12 +9,12 @@
   "author": "sulthan ahmed",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.2.0",
-    "mocha-sinon": "^2.1.2"
+    "axios": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
-    "mocha": "^10.1.0"
+    "mocha": "^10.1.0",
+    "mocha-sinon": "^2.1.2"
   }
 }
