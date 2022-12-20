@@ -32,10 +32,12 @@ const run = async (pokemonName) => {
 
     return JSON.stringify(map, undefined, 2);
   } catch (err) {
-      // Handle Error Here
-      if (err.response.status) {
-        console.error(`Status code: ${err.response.status} with error message ${err.response.statusText}`)
-      } else console.error(err);
+      // Tidy up error if we can
+      if (err?.response?.status) {
+        throw new Error(`Status code: ${err.response.status} with error message ${err.response.statusText}`);
+      } else {
+        throw err;
+      }
   }	
 }
 
