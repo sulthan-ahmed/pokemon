@@ -29,7 +29,7 @@ describe('Pokemon evolution chain', () => {
       ]
     };
 
-    const jsonExpected = await JSON.stringify(expected, undefined, 2);
+    const jsonExpected = JSON.stringify(expected, undefined, 2);
     const actual = await pokemon.run('butterfree');
     await assert.equal(actual, jsonExpected);
   }).timeout(5000);
