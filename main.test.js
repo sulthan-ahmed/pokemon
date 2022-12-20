@@ -1,3 +1,5 @@
+'use strict';
+
 const pokemon = require('./main');
 const assert = require('assert');
 const chai = require('chai');
