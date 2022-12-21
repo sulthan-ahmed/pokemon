@@ -2,10 +2,10 @@
 
 const axios = require('axios');
 
-const transform = (evolvesTo) => {
-  if (evolvesTo.evolves_to.length < 1) {
+const transform = (chain) => {
+  if (chain.evolves_to.length < 1) {
     return {
-      name: evolvesTo.species.name,
+      name: chain.species.name,
       variations: []
     };
   }
@@ -13,12 +13,12 @@ const transform = (evolvesTo) => {
 
   // This is also covers a potential situation where there are
   // multiple evolution chains
-  for(let i=0; i < evolvesTo.evolves_to.length; i++) {
-    evolutions.push(transform(evolvesTo.evolves_to[i]));
-  }
+  chain.evolves_to.forEach(chain => {
+    evolutions.push(transform(chain));
+  });
 
   return {
-    name: evolvesTo.species.name,
+    name: chain.species.name,
     variations: evolutions
   };
 };
