@@ -2,7 +2,7 @@
   "name": "pokemon",
   "version": "1.0.0",
   "description": "interview test",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "mocha main.test.js"
   },
