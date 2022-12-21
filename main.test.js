@@ -15,14 +15,14 @@ chai.use(chaiAsPromised);
 describe('Pokemon evolution chain', () => {
   it("test butterfree returns the right evolution variations", async () => {
     const expected = {
-      "name": "caterpie",
-      "variations": [
+      name: "caterpie",
+      variations: [
         {
-          "name": "metapod",
-          "variations": [
+          name: "metapod",
+          variations: [
             {
-              "name": "butterfree",
-              "variations": []
+              name: "butterfree",
+              variations: []
             }
           ]
         }
