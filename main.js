@@ -2,26 +2,10 @@
 
 const axios = require('axios');
 
-const transform = (chain) => {
-  if (chain.evolves_to.length < 1) {
-    return {
-      name: chain.species.name,
-      variations: []
-    };
-  }
-  const evolutions = [];
-
-  // This is also covers a potential situation where there are
-  // multiple evolution chains
-  chain.evolves_to.forEach(chain => {
-    evolutions.push(transform(chain));
-  });
-
-  return {
-    name: chain.species.name,
-    variations: evolutions
-  };
-};
+const transform = (chain) => ({
+  name: chain?.species?.name,
+  variations: chain?.evolves_to?.map(transform)
+});
 
 const run = async (pokemonName) => {
   try {
