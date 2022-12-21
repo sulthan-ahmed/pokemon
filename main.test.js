@@ -1,7 +1,6 @@
 'use strict';
 
 const pokemon = require('./main');
-const assert = require('assert');
 const chai = require('chai');
 const chaiAsPromised = require("chai-as-promised");
 
@@ -29,9 +28,15 @@ describe('Pokemon evolution chain', () => {
       ]
     };
 
-    const jsonExpected = JSON.stringify(expected, undefined, 2);
-    const actual = await pokemon.run('butterfree');
-    await assert.equal(actual, jsonExpected);
+    const result = (
+      pokemon.run('butterfree')
+        .then(JSON.parse)
+    );
+
+    return (
+      expect(result).to.be.fulfilled
+        .and.eventually.deep.equal(expected)
+    );
   }).timeout(5000);
 
   it("error status code is shown when an empty argument is provided", async () => {
