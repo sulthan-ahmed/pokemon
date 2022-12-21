@@ -2,6 +2,8 @@
 
 const axios = require('axios');
 
+const apiUrl = 'https://challenges.hackajob.co/pokeapi/api';
+
 const transform = (chain) => ({
   name: chain?.species?.name,
   variations: chain?.evolves_to?.map(transform)
@@ -9,7 +11,7 @@ const transform = (chain) => ({
 
 const run = async (pokemonName) => {
   try {
-    const pokemonSpecies = await axios.get(`https://challenges.hackajob.co/pokeapi/api/v2/pokemon-species/${pokemonName}/`);
+    const pokemonSpecies = await axios.get(`${apiUrl}/v2/pokemon-species/${pokemonName}/`);
     const evolutionChainUrl = pokemonSpecies?.data?.evolution_chain?.url;
 
     if (!evolutionChainUrl) {
